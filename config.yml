@@ -1,0 +1,21 @@
+version: 1
+settings:
+
+  # SSL证书配置
+  crt: "ssl.crt"  # 证书路径
+  key: "ssl.key"  # 私钥路径
+
+  # 代理配置
+  host: "0.0.0.0" # 代理地址
+  port: 8443 # 代理端口
+
+  # 转发配置
+  timeout: 10 # 转发超时时间
+
+  # 代理组
+  groups:
+    # 每一组表示将“https://host:port path”转发到“target_address”。由于验证有1s的超时时间，若为回调验证，则直接通过本服务器使用secret加密后回复
+    
+    - target_address: "" # 转发的目标地址，示例："http://127.0.0.1:8442/qq/webhook"
+      path: "/qq/webhook" # 接收路径，示例："/qq/webhook"
+      secret: "" # 密钥（仅验证回调地址时使用）
